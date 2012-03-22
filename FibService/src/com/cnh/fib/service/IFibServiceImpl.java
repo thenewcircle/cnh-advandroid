@@ -3,8 +3,10 @@ package com.cnh.fib.service;
 import java.util.List;
 
 import android.os.RemoteException;
+import android.util.Log;
 
 import com.cnh.fib.common.FibRequest;
+import com.cnh.fib.common.IFibListener;
 import com.cnh.fib.common.IFibService;
 
 public class IFibServiceImpl extends IFibService.Stub {
@@ -34,6 +36,14 @@ public class IFibServiceImpl extends IFibService.Stub {
 	public List<String> getSomeData() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void fibAsync(long n, IFibListener listener) throws RemoteException {
+		Log.d("IFibServiceImpl", "fibAsync start"+this.hashCode());
+		long result = FibLib.fibJ(n);
+		Log.d("IFibServiceImpl", "fibAsync stop"+this.hashCode());
+		listener.onResponse(result);
 	}
 
 }
