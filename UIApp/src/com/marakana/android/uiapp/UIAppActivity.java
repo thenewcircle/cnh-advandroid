@@ -18,7 +18,7 @@ public class UIAppActivity extends Activity {
 
 		DexClassLoader cl = new DexClassLoader("/sdcard/components.jar",
 				"/sdcard/", null, getClass().getClassLoader());
-
+ 
 		try { 
 			Class clazz = cl.loadClass("com.marakana.android.uicomponents.ComponentFragment");
 			Log.d(TAG, "GOT CLASS: " + clazz.toString());
